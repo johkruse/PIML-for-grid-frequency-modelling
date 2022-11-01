@@ -1,0 +1,7 @@
+/data/
+/.vscode/
+/results/
+*.jpg
+/notes/
+*.pyc
+/figures/
