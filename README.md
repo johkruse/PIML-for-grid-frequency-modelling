@@ -1,6 +1,6 @@
 # Physics-inspired machine learning for power grid frequency modelling
 
-Code accompanying the mansucript "Physics-inspired machine learning for power grid frequency modelling".
+Code accompanying the manuscript "Physics-inspired machine learning for power grid frequency modelling".
 Preprint: (inserted later)
 
 ## Install
