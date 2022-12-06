@@ -25,8 +25,8 @@ def load_data(freq_file = '../Frequency_data_preparation/TransnetBW/cleansed_201
     freq = freq *2*np.pi # transform to angular frequency
     
     # Read 15min resolved features
-    features = pd.read_hdf(feature_folder+'input_actual_15min.h5')
-    features = features.join(pd.read_hdf(feature_folder+'input_forecast_15min.h5'))
+    features = pd.read_hdf(feature_folder+'input_actual.h5')
+    features = features.join(pd.read_hdf(feature_folder+'input_forecast.h5'))
 
     # series has to start at 00:00
     assert freq.index[0].hour==0, 'frequency time series should start at 00:00'
