@@ -8,4 +8,4 @@ shap==0.41.0
 keras-tuner==1.1.3
 statsmodels==0.13.2
 ipywidgets==7.7.1
-seaborn==seaborn-0.12.0
+seaborn==0.12.0
