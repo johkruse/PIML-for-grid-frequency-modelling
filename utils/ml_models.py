@@ -14,9 +14,12 @@ from utils.stochastic_processes import SOPowerStep, SOSawtooth
 
 class DailyProfileModel(tf.keras.Model):
     
-    """Daily profile predictor with time-dependent Gaussian noise"""
 
     def __init__(self):
+        """
+        Daily profile predictor with time-dependent Gaussian noise.
+        """
+        
         super(DailyProfileModel, self).__init__()
         self.dp_means = None
         self.dp_stds = None
@@ -67,9 +70,12 @@ class DailyProfileModel(tf.keras.Model):
 
 class ConstantModel(tf.keras.Model):
     
-    """Constant predictor with time-independent Gaussian noise """
 
     def __init__(self):
+        """
+        Constant predictor with time-independent Gaussian noise.
+        """
+        
         super(ConstantModel, self).__init__()
         self.c_means = None
         self.c_stds = None
@@ -121,14 +127,12 @@ class ConstantModel(tf.keras.Model):
     
 class SOModel(tf.keras.Model):
     
-    """Model pipeline for second-order stochastic models with arbitrary power steps"""
-    
     def __init__(self, ts, power_step,vmin, param_scalings, feature_mean=0,
                  feature_var=1, list_of_units = [128,128, 64, 16],
                  activation_func='tanh', dropout_rate=0, use_sawtooth_analyt=True,
                  apply_scaling=True):
         """
-        Initialize the model.
+        Model pipeline for second-order stochastic models with arbitrary power steps.
 
         Args:
             ts (tensor):  1-d tensor with time steps of one interval.
@@ -238,10 +242,13 @@ class SOModel(tf.keras.Model):
 
 class SOHyperModel(kt.HyperModel):
     
-    """Meta-model for hyper-parameter tunig using the second-order stochastic model with arbitrary power steps"""
-    
     def __init__(self, vmin,  param_scalings, power_step, ts, feature_mean,
                  feature_var, loss):
+        
+        """
+        Meta-model for hyper-parameter tunig using the second-order stochastic model with arbitrary power steps.
+        """
+        
         super().__init__()
         self.dtype=ts.dtype
         self.param_scalings = param_scalings

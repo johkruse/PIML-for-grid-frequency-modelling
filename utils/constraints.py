@@ -7,13 +7,9 @@ import tensorflow as tf
     
 class SOContstraintScaling(tf.keras.layers.Layer):
     
-    """
-    Implementation of parameter constraints and scalings for second-order stochastic processes with arbitrary power step
-    """
-    
     def __init__(self, power_step, vmin, param_scalings):
         """
-        Initialize constraints and scalings.
+        Implementation of parameter constraints and scalings for second-order stochastic processes with arbitrary power step.
 
         Args:
             power_step (class): Power step implementation. 

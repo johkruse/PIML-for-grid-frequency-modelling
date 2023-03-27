@@ -8,12 +8,10 @@ from tqdm import tqdm
 
     
 class SOPowerStep(tf.keras.layers.Layer):
-    
-    """ Second-order stochastic process with arbitrary deterministic power function. """
-    
+        
     def __init__(self, ts, power_step, dt_ratio=10):
         """
-        Initialize model.
+        Second-order stochastic process with arbitrary deterministic power function. 
 
         Args:
             ts (tensor): 1-d tensor with time steps of one interval.
@@ -236,11 +234,10 @@ class SOPowerStep(tf.keras.layers.Layer):
     
 class SOSawtooth(tf.keras.layers.Layer):
     
-    """ Second-order stochastic process with sawtooth power steps. """
     
     def __init__(self, ts, dt_ratio=1):
         """
-        Initialize model.
+        Second-order stochastic process with sawtooth power steps.
 
         Args:
             ts (tensor): 1-d tensor with time steps of one interval.
