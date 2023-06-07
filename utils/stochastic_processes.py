@@ -94,7 +94,7 @@ class SOPowerStep(tf.keras.layers.Layer):
                 
                 Y[:,0,i + 1] = Y[:,0,i] + dt * Y[:,1,i] 
                 Y[:,1,i + 1] = (Y[:,1,i] + dt * (-Y[:,1,i] / params[:,5] - Y[:,0,i]/params[:,6]**2 
-                                                    + self.power_step.apply(i*dt, *tf.unstack(params[:,8:], axis=-1)) 
+                                                    + self.power_step.apply(i*dt, *list(params[:,8:].T)) 
                                                     ) 
                                         + params[:,7] * sqrtdt * np.random.randn(n_intervals)
                                 )
@@ -109,7 +109,7 @@ class SOPowerStep(tf.keras.layers.Layer):
                 
                     Y[j,0,i + 1] = Y[j,0,i] + dt * Y[j,1,i] 
                     Y[j,1,i + 1] = (Y[j,1,i] + dt * (-Y[j,1,i] / params[j,5] - Y[j,0,i]/params[j,6]**2 
-                                                        + self.power_step.apply(i*dt, *tf.unstack(params[j,8:], axis=-1)) 
+                                                        + self.power_step.apply(i*dt, *list(params[j,8:].T)) 
                                                         ) 
                                             + params[j,7] * sqrtdt * np.random.randn()
                                     )
@@ -436,7 +436,6 @@ class SOSawtooth(tf.keras.layers.Layer):
         Returns:
             tensor: stacked trajectories of means and std. deviations with shape (n_batch, n_time_steps, 2)
         """     
-        
         
         mean_vals = self.mean_t(params[...,:2],
                                 params[...,5],

@@ -148,8 +148,8 @@ class SOModel(tf.keras.Model):
             Defaults to [128,128, 64, 16].
             activation_func (str, optional): Activation function. Defaults to 'tanh'.
             dropout_rate (int, optional): Dropout rate. Defaults to 0.
-            use_sawtooth_analyt (bool, optional): If True, use the `SOSawtooth` class if sawtooth power steps are used. Otherwise, use
-            `SOPowerSteps` in all cases. Defaults to True.
+            use_sawtooth_analyt (bool, optional): If True, use the `SOSawtooth` class if a single sawtooth power step is used. Otherwise, use
+            `SOPowerSteps` in all cases, which can handle an arbitrary power step function. Defaults to True.
             apply_scaling (bool, optional): If False, revert the parameter scaling in the parameter model. If True, scaling is applied
             without intervention. 
         """
@@ -261,10 +261,10 @@ class SOHyperModel(kt.HyperModel):
     
     def build(self, hp):
     
-        learning_rate = hp.Choice("lr", [1e-4, 1e-3, 1e-2])
-        dropout_rate = hp.Choice("dropout", [0.,0.1,0.2,0.3])
+        learning_rate = hp.Choice("lr", [1e-4, 1e-3])
+        dropout_rate = hp.Choice("dropout", [0.,0.15, 0.3])
         n_units = hp.Choice("n_units", [64,128])
-        list_of_units = [n_units for i in range(hp.Choice("n_layers", [2,4,6]))] 
+        list_of_units = [n_units for i in range(hp.Choice("n_layers", [1,3,5]))] 
         activation_func = hp.Choice('activation_func', ['tanh', 'sigmoid'])
 
         model = SOModel(self.ts, self.power_func, self.vmin, self.param_scalings,
